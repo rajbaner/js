@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Date and Time</title>
+</head>
+<body>
+    <h1>Show Date and Time</h1>
+    <button onclick="showCurrentDate()">Show Date</button>
+    <button onclick="showCurrentTime()">Show Time</button>
+    <p id="result"></p>
+
+    <script>
+        function showCurrentDate() {
+            const currentDate = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            };
+            const formattedDate = currentDate.toLocaleDateString(undefined, options);
+            document.getElementById('result').textContent = `Current Date: ${formattedDate}`;
+        }
+
+        function showCurrentTime() {
+            const currentTime = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                timeZoneName: 'short',
+            };
+            const formattedTime = currentTime.toLocaleDateString(undefined, options);
+            document.getElementById('result').textContent = `Current Time: ${formattedTime}`;
+        }
+    </script>
+</body>
+</html>

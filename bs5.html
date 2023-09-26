@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form</title>
+   
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .form-group {
+            position: relative;
+        }
+
+        .icon {
+            position: absolute;
+            left: -40px;
+            top: 6px;
+            height: 30px;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+
+        .input-group-append {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <form>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-primary text-white icon"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control" id="first-name" placeholder="First Name">
+                <div class="input-group-append">
+                    <span class="input-group-text clear-icon"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+            <div class="error-message">Please supply the First Name</div>
+        </div>
+
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-success text-white icon"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+                <div class="input-group-append">
+                    <span class="input-group-text clear-icon"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+            <div class="error-message">Please supply the Last Name</div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-warning text-white icon"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="email" class="form-control" id="email" placeholder="Email">
+                <div class="input-group-append">
+                    <span class="input-group-text clear-icon"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+            <div class="error-message">Please supply the Email</div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-danger text-white icon"><i class="fas fa-phone"></i></span>
+                </div>
+                <input type="text" class="form-control" id="phone" placeholder="Phone">
+                <div class="input-group-append">
+                    <span class="input-group-text clear-icon"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+            <div class="error-message">Please supply the Phone</div>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-info text-white icon"><i class="fas fa-map-marker"></i></span>
+                </div>
+                <input type="text" class="form-control" id="address" placeholder="Address">
+                <div class="input-group-append">
+                    <span class="input-group-text clear-icon"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+            <div class="error-message">Please supply the Address</div>
+        </div>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-secondary text-white icon"><i class="fas fa-city"></i></span>
+                </div>
+                <input type="text" class="form-control" id="city" placeholder="City">
+                <div class="input-group-append">
+                    <span class="input-group-text clear-icon"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+            <div class="error-message">Please supply the City</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Add event listener to clear icons
+    $(".clear-icon").on("click", function () {
+        $(this).closest(".form-group").find("input").val("").focus();
+    });
+
+    // Add form validation
+    $("form").submit(function (event) {
+        event.preventDefault();
+
+        // Check if input fields are empty
+        $(".form-group input").each(function () {
+            if ($(this).val() === "") {
+                $(this).closest(".form-group").find(".error-message").show();
+            } else {
+                $(this).closest(".form-group").find(".error-message").hide();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #3498db, #e74c3c);
+            color: white;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        .password-strength {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+            <div class="error-message" id="firstNameError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+            <div class="error-message" id="lastNameError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <div class="error-message" id="emailError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <div class="password-strength" id="passwordStrength">Password Strength: Poor</div>
+        </div>
+        <div class="form-group">
+            <label for="reenterPassword">Re-enter Password:</label>
+            <input type="password" id="reenterPassword" required>
+            <div class="error-message" id="passwordMismatchError"></div>
+        </div>
+        <div class="form-group">
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male"> Male
+            <input type="radio" id="female" name="gender" value="female"> Female
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+            <div class="error-message" id="ageError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone No:</label>
+            <input type="tel" id="phone" required>
+            <div class="error-message" id="phoneError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+            <div class="error-message" id="addressError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" required>
+            <div class="error-message" id="stateError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" id="country" required>
+            <div class="error-message" id="countryError">This field is required</div>
+        </div>
+        <div class="form-group">
+            <label>Languages Known:</label>
+            <input type="checkbox" id="english" name="languages" value="english"> English
+            <input type="checkbox" id="spanish" name="languages" value="spanish"> Spanish
+            <input type="checkbox" id="french" name="languages" value="french"> French
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="declaration" required>
+            <label for="declaration">Hereby I declare all the details are true</label>
+            <div class="error-message" id="declarationError">You must agree to the declaration</div>
+        </div>
+        <button class="submit-btn" id="registerBtn">Register</button>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const reenterPasswordInput = document.getElementById('reenterPassword');
+        const passwordStrength = document.getElementById('passwordStrength');
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        const inputFields = document.querySelectorAll('input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="number"]');
+        const errorMessages = document.querySelectorAll('.error-message');
+        const declarationCheckbox = document.getElementById('declaration');
+        
+        function checkPasswordStrength() {
+            const password = passwordInput.value;
+
+            if (passwordPattern.test(password)) {
+                passwordStrength.textContent = 'Password Strength: Strong';
+                passwordStrength.style.color = 'green';
+            } else if (password.length >= 8) {
+                passwordStrength.textContent = 'Password Strength: OK';
+                passwordStrength.style.color = 'orange';
+            } else {
+                passwordStrength.textContent = 'Password Strength: Poor';
+                passwordStrength.style.color = 'red';
+            }
+        }
+
+        function checkFieldNotEmpty(field, errorMessage) {
+            if (field.value.trim() === '') {
+                errorMessage.textContent = 'This field is required';
+                errorMessage.style.color = 'red';
+                return false;
+            } else {
+                errorMessage.textContent = '';
+                return true;
+            }
+        }
+
+        passwordInput.addEventListener('input', checkPasswordStrength);
+
+        inputFields.forEach((field, index) => {
+            field.addEventListener('input', () => {
+                checkFieldNotEmpty(field, errorMessages[index]);
+            });
+        });
+
+        reenterPasswordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            const reenteredPassword = reenterPasswordInput.value;
+            const passwordMismatchError = document.getElementById('passwordMismatchError');
+            
+            if (password !== reenteredPassword) {
+                passwordMismatchError.textContent = 'Passwords do not match';
+                passwordMismatchError.style.color = 'red';
+            } else {
+                passwordMismatchError.textContent = '';
+            }
+        });
+
+        declarationCheckbox.addEventListener('change', () => {
+            checkFieldNotEmpty(declarationCheckbox, document.getElementById('declarationError'));
+        });
+    </script>
+</body>
+</html>

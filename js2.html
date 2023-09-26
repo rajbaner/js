@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Letters in Alphabetical Order</title>
+</head>
+<body>
+    <h1>Sort Letters in Alphabetical Order</h1>
+    <p>Enter a string to sort:</p>
+    <input type="text" id="stringInput" placeholder="Enter a string">
+    <button onclick="sortAndDisplay()">Sort</button>
+    <p id="result"></p>
+
+    <script>
+        function sortStringAlphabetically(str) {
+            return str.split('').sort().join('');
+        }
+
+        function sortAndDisplay() {
+            const stringInput = document.getElementById('stringInput');
+            const resultElement = document.getElementById('result');
+
+            const inputString = stringInput.value.trim();
+
+            if (inputString.length > 0) {
+                const sortedString = sortStringAlphabetically(inputString);
+                resultElement.textContent = `Sorted String: ${sortedString}`;
+            } else {
+                resultElement.textContent = 'Please enter a valid string.';
+            }
+        }
+    </script>
+</body>
+</html>

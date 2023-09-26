@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Validation</title>
+    <style>
+        .error-message {
+            color: red;
+            display: none;
+        }
+
+        .error-border {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form id="contactForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="error-border">
+            <span class="error-message" id="nameError">This field is required</span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="error-border">
+            <span class="error-message" id="emailError">A valid email address is required</span>
+        </div>
+        <div>
+            <label for="website">Website:</label>
+            <input type="url" id="website" name="website" class="error-border">
+            <span class="error-message" id="websiteError">A valid URL is required</span>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" class="error-border"></textarea>
+            <span class="error-message" id="messageError">This field is required</span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const websiteInput = document.getElementById('website');
+        const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const websiteError = document.getElementById('websiteError');
+        const messageError = document.getElementById('messageError');
+
+        form.addEventListener('submit', function (e) {
+            let valid = true;
+
+            if (nameInput.value.trim() === '') {
+                valid = false;
+                nameError.style.display = 'block';
+                nameInput.classList.add('error-border');
+            } else {
+                nameError.style.display = 'none';
+                nameInput.classList.remove('error-border');
+            }
+
+            if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
+                valid = false;
+                emailError.style.display = 'block';
+                emailInput.classList.add('error-border');
+            } else {
+                emailError.style.display = 'none';
+                emailInput.classList.remove('error-border');
+            }
+
+            if (websiteInput.value.trim() === '' || !isValidURL(websiteInput.value)) {
+                valid = false;
+                websiteError.style.display = 'block';
+                websiteInput.classList.add('error-border');
+            } else {
+                websiteError.style.display = 'none';
+                websiteInput.classList.remove('error-border');
+            }
+
+            if (messageInput.value.trim() === '') {
+                valid = false;
+                messageError.style.display = 'block';
+                messageInput.classList.add('error-border');
+            } else {
+                messageError.style.display = 'none';
+                messageInput.classList.remove('error-border');
+            }
+
+            if (!valid) {
+                e.preventDefault();
+            }
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidURL(url) {
+            try {
+                new URL(url);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

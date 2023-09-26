@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap JS (jQuery and Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom CSS -->
+    <style>
+        /* Add your custom CSS styles here */
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #3498db; /* Change the background color */
+        }
+
+        .navbar-brand {
+            color: #fff; /* Change the text color */
+        }
+
+        .nav-link {
+            color: #fff; /* Change the text color */
+        }
+
+        .nav-link:hover {
+            color: #ff9900; /* Change the hover color */
+        }
+
+        .btn-primary {
+            background-color: #ff9900; /* Change the button background color */
+            border-color: #ff9900; /* Change the button border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #e68a00; /* Change the hover background color */
+            border-color: #e68a00; /* Change the hover border color */
+        }
+
+        /* Pricing section styles */
+        .grey-section {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin-right: 100px; /* Add a border around each pricing box */
+        }
+
+        /* Pricing box title styles */
+        .grey-section h4 {
+            color: #333; /* Change the title color */
+        }
+
+        /* Pricing box price styles */
+        .grey-section p {
+            color: #777; /* Change the price text color */
+        }
+
+        /* Sidebar styles */
+
+        /* Content styles */
+        .content {
+            margin-left: 270px; /* Adjust margin to make room for the sidebar */
+            padding: 20px;
+        }
+
+        /* List item styles */
+        .list-group {
+            margin-top: 30px;
+        }
+
+        .list-group-item {
+            background-color: #f2f2f2;
+            color: #333;
+            border: none;
+        }
+
+        /* Bottom section styles */
+        .bottom-section {
+            margin-top: 200px;
+            width: 100%;
+            height: 100%;
+            background-color: #f2f2f2;
+            padding: 30px;
+            margin-left: -300px;
+        }
+
+        .bottom-section h3 {
+            text-align: center;
+        }
+
+        .horizontal-list {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .horizontal-list-item {
+            flex-basis: calc(33.33% - 100px); /* Adjust width for 3 items with margin */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#"><img src="your-logo.png" alt="Logo" height="30"></a>
+        <!-- Navigation Items -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Item 4</a>
+            </li>
+        </ul>
+        <!-- Signup Button -->
+        <a class="btn btn-primary ml-2" href="#">Sign Up</a>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+
+<!-- Main Content -->
+<div class="content">
+    <!-- Pricing Section -->
+    <div class="container text-center">
+        <h2>Pricing</h2>
+        <p>Some text beneath the pricing information.</p>
+
+        <!-- Pricing Boxes -->
+        <div class="row">
+            <!-- Free Plan -->
+            <div class="col-md-4">
+                <div class="grey-section">
+                    <h4>Free</h4>
+                    <p>$0/month</p>
+                    <a href="#" class="btn btn-primary">Sign Up for Free</a>
+                </div>
+            </div>
+            <!-- Pro Plan -->
+            <div class="col-md-4">
+                <div class="grey-section">
+                    <h4>Pro</h4>
+                    <p>$9.99/month</p>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+            <!-- Enterprise Plan -->
+            <div class="col-md-4">
+                <div class="grey-section">
+                    <h4>Enterprise</h4>
+                    <p>Contact Us</p>
+                    <a href="#" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="container bottom-section">
+        <h3>Explore</h3>
+        <div class="horizontal-list">
+            <div class="horizontal-list-item">
+                <h4>Resources</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">Resource 1</li>
+                    <li class="list-group-item">Resource 2</li>
+                    <li class="list-group-item">Resource 3</li>
+                </ul>
+            </div>
+            <div class="horizontal-list-item">
+                <h4>Features</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">Feature 1</li>
+                    <li class="list-group-item">Feature 2</li>
+                    <li class="list-group-item">Feature 3</li>
+                </ul>
+            </div>
+            <div class="horizontal-list-item">
+                <h4>About Us</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">About 1</li>
+                    <li class="list-group-item">About 2</li>
+                    <li class="list-group-item">About 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

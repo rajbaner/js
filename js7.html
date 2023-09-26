@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Animation</title>
+    <!-- Add CSS for styling -->
+    <style>
+        #car {
+            position: relative;
+            left: 0;
+            transition: left 2s linear;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Animation</h1>
+    <img id="car" src="car.png" alt="Car" width="100">
+    <br><br>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+
+    <script>
+        const car = document.getElementById('car');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        let isMoving = false;
+        let currentLeft = 0;
+
+        startButton.addEventListener('click', () => {
+            if (!isMoving) {
+                isMoving = true;
+                car.style.left = '100%';
+            }
+        });
+
+        stopButton.addEventListener('click', () => {
+            if (isMoving) {
+                isMoving = false;
+                currentLeft = parseFloat(getComputedStyle(car).left);
+                car.style.left = currentLeft + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
